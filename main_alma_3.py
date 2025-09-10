@@ -83,7 +83,7 @@ def canBeInserted(schedule: list, list_of_lesson: list):
 def main():
     """
     the main function
-    :return:
+    :return: None
     """
     # inputs from the user:
     amount_of_days = get_amount_of_days()
