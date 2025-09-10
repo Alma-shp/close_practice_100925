@@ -27,6 +27,7 @@ def is_lesson_valid(lesson: str, hours_per_day: int):
     :param hours_per_day: number of hours per day
     :return: bool,problem indicator
     """
+    # organizing the input:
     list_of_lesson = lesson.split("_")
     lesson_duration = int(list_of_lesson[1])
     lesson_starting_hour = int(list_of_lesson[3])
@@ -56,12 +57,17 @@ def canBeInserted(schedule: list, list_of_lesson: list):
     :param list_of_lesson:  of [name of class,how many hours the class,day,starting hour]
     :return: bool True if the lesson can be inserted, False if not.
     """
+    # organizing the input:
     lesson_day = list_of_lesson[2].lower()
     lesson_duration = int(list_of_lesson[1])
     lesson_starting_hour = int(list_of_lesson[3])
 
+    # indicator to what lesson are we currently running on:
     current_starting_hour = 8
+
+    # iteration count when we run inside the range of the lesson:
     iterations = 0
+
     for hour in schedule[DAYS_DICT[lesson_day]]:
         if current_starting_hour >= lesson_starting_hour:
             if iterations <= lesson_duration:
@@ -109,7 +115,10 @@ def main():
     #
 
     # part 3- Initial insertion of lessons
+
+    # the lessons we will try to place in part 4:
     problematic_lessons = []
+
     for lesson in lessons_list:
         # getting the info organized:
         list_of_lesson = lesson.split("_")
@@ -142,6 +151,8 @@ def main():
         for day in schedule[i]:
             print(day, end=" ")
         print()
+
+    #
 
 
 main()
